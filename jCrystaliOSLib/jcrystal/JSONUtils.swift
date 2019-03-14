@@ -34,7 +34,7 @@ let SDF_SIMPLE_DATE = createDateFormatter("dd/MM/yyyy", nil)
 let SDF_SIMPLE_DATE_TEXT = createDateFormatter("dd 'de' MMMM 'de' yyyy", nil)
 let SDF_SIMPLE_DATE_TIME = createDateFormatter("dd/MM/yyyy HH:mm", nil)
                 
-func jsonQuote(_ textNN: String) -> String {
+public func jsonQuote(_ textNN: String) -> String {
         if !textNN.isEmpty{
             var ret : String = "\""
             var b : Character = Character("\0")
@@ -83,7 +83,7 @@ func jsonQuote(_ textNN: String) -> String {
         }
         return "\"\""
 }
-func jsonQuote(_ a : [Int64]) -> String{
+public func jsonQuote(_ a : [Int64]) -> String{
     var ret = "["
     if a.count > 0{
         ret += "\(a[0])"
@@ -94,7 +94,7 @@ func jsonQuote(_ a : [Int64]) -> String{
     
     return ret + "]"
 }
-func jsonQuote(_ a : [Int]) -> String{
+public func jsonQuote(_ a : [Int]) -> String{
     var ret = "["
     if a.count > 0{
         ret += "\(a[0])"
@@ -104,7 +104,7 @@ func jsonQuote(_ a : [Int]) -> String{
     }
     return ret + "]"
 }
-func jsonQuote(_ a : [Double]) -> String{
+public func jsonQuote(_ a : [Double]) -> String{
     var ret = "["
     if a.count > 0{
 		ret += "\(a[0])"
@@ -114,7 +114,7 @@ func jsonQuote(_ a : [Double]) -> String{
     }
     return ret + "]"
 }
-func jsonQuote(_ a : [Bool]) -> String{
+public func jsonQuote(_ a : [Bool]) -> String{
     var ret = "["
     if a.count > 0{
         ret += "\(a[0])"
@@ -124,7 +124,7 @@ func jsonQuote(_ a : [Bool]) -> String{
     }
     return ret + "]"
 }
-func jsonQuote(_ a : [String]) -> String{
+public func jsonQuote(_ a : [String]) -> String{
     var ret = "["
     if a.count >= 1{
 		ret += "\(jsonQuote(a[0]))"

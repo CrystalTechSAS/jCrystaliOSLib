@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-var DEBUG : Bool = false
+public var DEBUG : Bool = false
 public class JCrystalApp{
 	static let URL = "#URL"
 	static func normalizeURL(_ url : String!) -> String{
