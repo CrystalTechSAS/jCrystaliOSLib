@@ -21,15 +21,17 @@
  * THE SOFTWARE.
  */
 import UIKit
-class PhotoPicker : NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+import Photos
+
+public class PhotoPicker : NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     var controller : UIViewController?
     var imageRecieve : ((UIImage)->())?
-    func take(_ controller : UIViewController, imageRecieve : @escaping (UIImage)->()){
+    public func take(_ controller : UIViewController, type: UIImagePickerController.SourceType, imageRecieve : @escaping (UIImage)->()){
         self.imageRecieve = imageRecieve
         self.controller = controller
         let imagePicker =  UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.sourceType = .camera
+        imagePicker.sourceType = type
         controller.present(imagePicker, animated: true, completion: nil)
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -42,8 +44,47 @@ class PhotoPicker : NSObject, UIImagePickerControllerDelegate, UINavigationContr
         }
         
     }
+    public func tryAndTakePhoto(_ controller : UIViewController, imageRecieve : @escaping (UIImage)->()){
+        let actionSheet = UIAlertController(title: "Subir foto", message: "¿Deseas tomar una nueva foto o obtenerla de tu galería?", preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Cámara", style: .default, handler: { (action) -> Void in
+            self.take(controller, type: .camera, imageRecieve: imageRecieve)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Galeria", style: .default, handler: { (action) -> Void in
+            self.authorizationStatus(controller, imageRecieve: imageRecieve)
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
+        controller.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    public func authorizationStatus(_ controller : UIViewController,imageRecieve : @escaping (UIImage)->()) {
+        let status = PHPhotoLibrary.authorizationStatus()
+        switch status {
+        case .authorized:
+            self.take(controller, type: .photoLibrary, imageRecieve: imageRecieve)
+        case .denied:
+            print("permission denied")
+            controller.showAlert("Debes darle permisos a esta aplicación para subir imágenes")
+        case .notDetermined:
+            print("Permission Not Determined")
+            PHPhotoLibrary.requestAuthorization({ (status) in
+                if status == PHAuthorizationStatus.authorized{
+                    print("access given")
+                    self.take(controller, type: .photoLibrary, imageRecieve: imageRecieve)
+                }else{
+                    print("restriced manually")
+                    controller.showAlert("Debes darle permisos a esta aplicación para subir imágenes")
+                }
+            })
+        case .restricted:
+            print("permission restricted")
+            controller.showAlert("Debes darle permisos a esta aplicación para subir imágenes")
+        default:
+            break
+        }
+    }
 }
-func scaledToSizeWithImage(imag : UIImage, newSize: CGSize)->UIImage{
+private func scaledToSizeWithImage(imag : UIImage, newSize: CGSize)->UIImage{
     UIGraphicsBeginImageContext(newSize);
     imag.draw(in: CGRect(x:0, y:0, width: newSize.width, height : newSize.height))
     let newImage = UIGraphicsGetImageFromCurrentImageContext()

@@ -21,18 +21,18 @@
  * THE SOFTWARE.
  */
 public class RequestError {
-    static let UPGRADE_REQUIRED_CODE = 426
+    public static let UPGRADE_REQUIRED_CODE = 426
 
-    let tipoError : TipoError
-    let mensaje : String!
-    let codigo : Int!
+    public let tipoError : TipoError
+    public let mensaje : String!
+    public let codigo : Int!
 
-    init(tipoError: TipoError, mensaje: String!) {
+    public init(tipoError: TipoError, mensaje: String!) {
         self.tipoError = tipoError;
         self.mensaje = mensaje;
         self.codigo = -1;
     }
-    init(codigo: Int, mensaje: String!) {
+    public init(codigo: Int, mensaje: String!) {
         self.tipoError = TipoError.ERROR;
         self.mensaje = mensaje;
         self.codigo = codigo;

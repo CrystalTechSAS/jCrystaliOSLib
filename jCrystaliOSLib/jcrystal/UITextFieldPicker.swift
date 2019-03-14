@@ -22,13 +22,13 @@
  */
 import UIKit
 extension UITextField{
-    @discardableResult func addSinglePicker<T>(options : [(T, String)]) -> SingleUIPickerView<T>{
+    @discardableResult public func addSinglePicker<T>(options : [(T, String)]) -> SingleUIPickerView<T>{
         let picker = SingleUIPickerView<T>()
         picker.setup(textField : self, options: options)
         self.inputView = picker
         return picker
     }
-    func addDatePicker(_ target: Any?, action : Selector){
+    public func addDatePicker(_ target: Any?, action : Selector){
         let datePickerView  : UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePicker.Mode.date
         datePickerView.backgroundColor = UIColor.white
@@ -51,7 +51,7 @@ extension UITextField{
         }
     }
 }
-class SingleUIPickerView<T> : UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate{
+public class SingleUIPickerView<T> : UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate{
     var options : [(T, String)] = []
     var textField : UITextField!
     var listener : ((T)->())!
@@ -96,11 +96,11 @@ class SingleUIPickerView<T> : UIPickerView, UIPickerViewDataSource, UIPickerView
         return self
     }
     @discardableResult
-    func addListener(listener : @escaping ((T)->()))  -> SingleUIPickerView<T>{
+    public func addListener(listener : @escaping ((T)->()))  -> SingleUIPickerView<T>{
     	self.listener = listener
         return self
     }
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if row < options.count{
             selected = options[row].0
             textField.text = options[row].1
@@ -109,13 +109,13 @@ class SingleUIPickerView<T> : UIPickerView, UIPickerViewDataSource, UIPickerView
             }
         }
     }
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return options.count
     }
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return options[row].1
     }
 }

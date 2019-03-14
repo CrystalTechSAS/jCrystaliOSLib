@@ -20,13 +20,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-enum RequestType : String{
+public enum RequestType : String{
 	case GET = "GET"
 	case POST = "POST"
 	case PUT = "PUT"
 	case DELETE = "DELETE"
 	case PATCH = "PATCH"
-	var isPost : Bool{
+	public var isPost : Bool{
 		switch self{
 			case .GET: return false
 			case .POST: return true

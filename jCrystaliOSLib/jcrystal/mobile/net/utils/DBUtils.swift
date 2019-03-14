@@ -22,7 +22,7 @@
  */
 import Foundation
 
-class DBUtils{
+public class DBUtils{
     private static let coma = [UInt8](",".utf8)
     public static func getPath(_ partKey: String!, _ key: String, append : Bool = false)-> URL!{
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {

@@ -23,61 +23,61 @@
 import Foundation
 
 extension OutputStream{
-	func print(_ data : Data){
+	public func print(_ data : Data){
         let encodedDataArray = [UInt8](data)
         write(encodedDataArray, maxLength: encodedDataArray.count)
     }
-    func print(_ string : String){
+    public func print(_ string : String){
         let encodedDataArray = [UInt8](string.utf8)
         write(encodedDataArray, maxLength: encodedDataArray.count)
     }
-    func print(_ int : Int){
+    public func print(_ int : Int){
         let encodedDataArray = [UInt8]("\(int)".utf8)
         write(encodedDataArray, maxLength: encodedDataArray.count)
     }
-    func print(_ int64 : Int64){
+    public func print(_ int64 : Int64){
         let encodedDataArray = [UInt8]("\(int64)".utf8)
         write(encodedDataArray, maxLength: encodedDataArray.count)
     }
-    func print(_ double : Double){
+    public func print(_ double : Double){
         let encodedDataArray = [UInt8]("\(double)".utf8)
         write(encodedDataArray, maxLength: encodedDataArray.count)
     }
-    func print(_ bool : Bool){
+    public func print(_ bool : Bool){
         let encodedDataArray = [UInt8]("\(bool)".utf8)
         write(encodedDataArray, maxLength: encodedDataArray.count)
     }
-    func print(_ s1 : String, _ s2 : String) {
+    public func print(_ s1 : String, _ s2 : String) {
         print(s1)
         print(s2)
     }
-    func print(_ s1 : String, _ s2 : Int ) {
+    public func print(_ s1 : String, _ s2 : Int ) {
         print(s1)
         print(s2)
     }
-    func print(_ s1 : String, _ s2 : Int64) {
+    public func print(_ s1 : String, _ s2 : Int64) {
         print(s1)
         print(s2)
     }
-    func print(_ s1 : String, _ s2 : Bool ) {
+    public func print(_ s1 : String, _ s2 : Bool ) {
         print(s1)
         print(s2)
     }
-    func print(_ s1 : String, _ s2 : Double) {
+    public func print(_ s1 : String, _ s2 : Double) {
         print(s1)
         print(s2)
     }
-    func print(_ s1 : String, _ s2 : String, _ s3 : String) {
-        print(s1)
-        print(s2)
-        print(s3)
-    }
-    func print(_ s1 : String, _ s2 : Int64 , _ s3 : String) {
+    public func print(_ s1 : String, _ s2 : String, _ s3 : String) {
         print(s1)
         print(s2)
         print(s3)
     }
-    func print(_ s1 : String, _ s2 : String, _ s3 : String, _ s4 : String) {
+    public func print(_ s1 : String, _ s2 : Int64 , _ s3 : String) {
+        print(s1)
+        print(s2)
+        print(s3)
+    }
+    public func print(_ s1 : String, _ s2 : String, _ s3 : String, _ s4 : String) {
         print(s1)
         print(s2)
         print(s3)

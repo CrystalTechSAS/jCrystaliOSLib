@@ -22,20 +22,20 @@
  */
 import UIKit
 
-var ERROR_DIALOG_TITLE = "Error"
-var INFO_DIALOG_TITLE = "Information"
+public var ERROR_DIALOG_TITLE = "Error"
+public var INFO_DIALOG_TITLE = "Information"
 var lastViewHeight = CGFloat.infinity
-extension UIViewController{
-    func showAlert(_ text: String, handler: ((UIAlertAction) -> Void)? = nil){
+public extension UIViewController{
+    public func showAlert(_ text: String, handler: ((UIAlertAction) -> Void)? = nil){
         present(createAlert(text, handler: handler), animated: true, completion: nil)
     }
-    func showInfo(_ text: String, titulo: String = INFO_DIALOG_TITLE, handler: ((UIAlertAction) -> Void)? = nil){
+    public func showInfo(_ text: String, titulo: String = INFO_DIALOG_TITLE, handler: ((UIAlertAction) -> Void)? = nil){
         present(createAlert(text, titulo: titulo, handler: handler), animated: true, completion: nil)
     }
-    func finish(){
+    public func finish(){
         self.dismiss(animated: true, completion: nil)
     }
-    func defaultOnError(_ error : RequestError){
+    public func defaultOnError(_ error : RequestError){
         DispatchQueue.main.async(execute: {
             self.hideActivityIndicator()
             if error.tipoError == TipoError.UNAUTHORIZED{
@@ -53,7 +53,7 @@ extension UIViewController{
             }
         })
     }
-    func showActivityIndicator(){
+    public func showActivityIndicator(){
 		if let activityIndicator = view.viewWithTag(99999999) as? UIActivityIndicatorView{
         }else{
             let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
@@ -63,18 +63,18 @@ extension UIViewController{
             activityIndicator.frame = view.bounds
             activityIndicator.startAnimating()
         }    }
-    func hideActivityIndicator(){
+    public func hideActivityIndicator(){
         if let activityIndicator = view.viewWithTag(99999999) as? UIActivityIndicatorView{
             activityIndicator.stopAnimating()
             activityIndicator.removeFromSuperview()
         }
     }
     //KeyboardUtils
-    func register(){
+    public func register(){
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    func unregister(){
+    public func unregister(){
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -95,7 +95,7 @@ extension UIViewController{
         }
     }
 }
-func createAlert(_ text: String, titulo: String = INFO_DIALOG_TITLE, handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertController{
+public func createAlert(_ text: String, titulo: String = INFO_DIALOG_TITLE, handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertController{
     let alert = UIAlertController(title: titulo, message: text, preferredStyle: UIAlertController.Style.alert)
     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: handler))
     alert.view.setNeedsLayout()

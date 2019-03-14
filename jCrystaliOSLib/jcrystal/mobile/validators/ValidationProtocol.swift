@@ -23,17 +23,17 @@
 import Foundation
 import UIKit
 
-protocol ValidationProtocol{
+public protocol ValidationProtocol{
     var inputText: String? { get }
 
 }
 extension UITextField : ValidationProtocol{
-    var inputText: String? {
+    public var inputText: String? {
         return self.text
     }
 }
 extension UITextView : ValidationProtocol{
-    var inputText: String? {
+    public var inputText: String? {
         return self.text
     }
 }

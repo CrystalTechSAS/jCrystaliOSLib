@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 import Foundation
-class JCFile{
+public class JCFile{
 	var data : Data;
 	var mimeType : String!;
 	init(data : Data, type : String!){

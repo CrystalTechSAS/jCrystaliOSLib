@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 import UIKit
-class SimpleStore{
+public class SimpleStore{
 	static func get(_ key : String, _ defValue : String! = nil) -> String!{
 		let preferences = UserDefaults.standard
 		if preferences.object(forKey: key) != nil{

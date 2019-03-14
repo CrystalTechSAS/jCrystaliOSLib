@@ -22,9 +22,9 @@
  */
 import Foundation
 public class AbsDefaultManager{
-	static let BASE_URL = ""
+	public static let BASE_URL = ""
 	var formData = false
-	var boundary = ""
+	public var boundary = ""
 	var type = RequestType.GET
 	var authorization : String? = nil
 	var onError : (RequestError)->()
@@ -35,7 +35,7 @@ public class AbsDefaultManager{
 		self.onError = onError
 		self.url = url
 	}
-	func doFormData() -> AbsDefaultManager{
+	public func doFormData() -> AbsDefaultManager{
 		formData = true
 		self.boundary = "Boundary-\(UUID().uuidString)"
 		return self
@@ -114,7 +114,7 @@ public class AbsDefaultManager{
 	}
 	public class StringResp : AbsDefaultManager{
 		var onResponse : (String)->()
-		init(url : String, onResponse : @escaping (String)->(), onError : @escaping (RequestError)->()){
+		public init(url : String, onResponse : @escaping (String)->(), onError : @escaping (RequestError)->()){
 			self.onResponse = onResponse
 			super.init(url : url, onError : onError)
 		}
@@ -124,7 +124,7 @@ public class AbsDefaultManager{
 	}
 	public class JSONObjectResp : AbsDefaultManager{
 		var onResponse : ([String: AnyObject])->()
-		init(url : String, onResponse : @escaping ([String: AnyObject])->(), onError : @escaping (RequestError)->()){
+		public init(url : String, onResponse : @escaping ([String: AnyObject])->(), onError : @escaping (RequestError)->()){
 			self.onResponse = onResponse
 			super.init(url : url, onError : onError)
 		}
@@ -154,7 +154,7 @@ public class AbsDefaultManager{
 	}
 	public class JSONArrayResp : AbsDefaultManager{
 		var onResponse : ([[String: AnyObject]])->()
-		init(url : String, onResponse : @escaping ([[String: AnyObject]])->(), onError : @escaping (RequestError)->()){
+		public init(url : String, onResponse : @escaping ([[String: AnyObject]])->(), onError : @escaping (RequestError)->()){
 			self.onResponse = onResponse
 			super.init(url : url, onError : onError)
 		}
@@ -174,33 +174,33 @@ public class AbsDefaultManager{
 	}
 	func getResponse(_ resp : Data){
 	}
-	func authorization(_ authorization : String) -> AbsDefaultManager{
+	public func authorization(_ authorization : String) -> AbsDefaultManager{
 		self.authorization = authorization
 		return self
 	}
-	func doGet(){
+	public func doGet(){
 		self.type = .GET
 		self.doRequest()
 	}
-	func doPost(makeBody : @escaping (OutputStream, AbsDefaultManager) -> ()){
+	public func doPost(makeBody : @escaping (OutputStream, AbsDefaultManager) -> ()){
 		self.makeBody = makeBody
 		self.type = .POST
 		DispatchQueue.main.async{
 			self.doRequest()
 		}
 	}
-	func doPut(makeBody : @escaping (OutputStream, AbsDefaultManager) -> ()){
+	public func doPut(makeBody : @escaping (OutputStream, AbsDefaultManager) -> ()){
 		self.makeBody = makeBody
 		self.type = .PUT
 		DispatchQueue.main.async{
 			self.doRequest()
 		}
 	}
-	func doDelete(){
+	public func doDelete(){
 		self.type = .DELETE
 		self.doRequest()
 	}
-	func doPatch(makeBody : @escaping (OutputStream, AbsDefaultManager) -> ()){
+	public func doPatch(makeBody : @escaping (OutputStream, AbsDefaultManager) -> ()){
 		self.makeBody = makeBody
 		self.type = .PATCH
 		DispatchQueue.main.async{

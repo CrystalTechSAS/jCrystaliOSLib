@@ -23,21 +23,21 @@
 import UIKit
 
 extension UIScrollView : UITextFieldDelegate,UITextViewDelegate{
-    func register(_ vc : UIViewController){
+    public func register(_ vc : UIViewController){
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    func unregister(_ vc : UIViewController){
+    public func unregister(_ vc : UIViewController){
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    @objc func keyboardWasShown(notification: NSNotification){
+    @objc public func keyboardWasShown(notification: NSNotification){
         var info = notification.userInfo!
         let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
         self.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize!.height+60, right: 0.0)
         self.scrollIndicatorInsets = self.contentInset
     }
-    @objc func keyboardWillBeHidden(notification: NSNotification){
+    @objc public func keyboardWillBeHidden(notification: NSNotification){
         self.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0, right: 0.0)
         self.scrollIndicatorInsets = self.contentInset
     }
@@ -126,7 +126,7 @@ extension UIScrollView : UITextFieldDelegate,UITextViewDelegate{
 }
 
 extension String{
-	 func isValidEmail() -> Bool {        
+	 public func isValidEmail() -> Bool {        
     	let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
 
     	let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
