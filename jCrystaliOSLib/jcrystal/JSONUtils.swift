@@ -40,7 +40,7 @@ public func jsonQuote(_ textNN: String) -> String {
             var b : Character = Character("\0")
             let scalars = textNN.unicodeScalars
             var pos = 0
-            for c in textNN.characters{
+            for c in textNN{
                 switch (c) {
                     case "\\":
                         ret += "\\\\"

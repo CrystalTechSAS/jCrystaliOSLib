@@ -34,7 +34,7 @@ public class PhotoPicker : NSObject, UIImagePickerControllerDelegate, UINavigati
         imagePicker.sourceType = type
         controller.present(imagePicker, animated: true, completion: nil)
     }
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)
         
         if let uiImage = info[.originalImage] as? UIImage{

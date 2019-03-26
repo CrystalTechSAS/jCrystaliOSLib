@@ -26,16 +26,16 @@ public var ERROR_DIALOG_TITLE = "Error"
 public var INFO_DIALOG_TITLE = "Information"
 var lastViewHeight = CGFloat.infinity
 public extension UIViewController{
-    public func showAlert(_ text: String, handler: ((UIAlertAction) -> Void)? = nil){
+    func showAlert(_ text: String, handler: ((UIAlertAction) -> Void)? = nil){
         present(createAlert(text, handler: handler), animated: true, completion: nil)
     }
-    public func showInfo(_ text: String, titulo: String = INFO_DIALOG_TITLE, handler: ((UIAlertAction) -> Void)? = nil){
+    func showInfo(_ text: String, titulo: String = INFO_DIALOG_TITLE, handler: ((UIAlertAction) -> Void)? = nil){
         present(createAlert(text, titulo: titulo, handler: handler), animated: true, completion: nil)
     }
-    public func finish(){
+    func finish(){
         self.dismiss(animated: true, completion: nil)
     }
-    public func defaultOnError(_ error : RequestError){
+    func defaultOnError(_ error : RequestError){
         DispatchQueue.main.async(execute: {
             self.hideActivityIndicator()
             if error.tipoError == TipoError.UNAUTHORIZED{
@@ -53,7 +53,7 @@ public extension UIViewController{
             }
         })
     }
-    public func showActivityIndicator(){
+    func showActivityIndicator(){
 		if let activityIndicator = view.viewWithTag(99999999) as? UIActivityIndicatorView{
         }else{
             let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
@@ -63,18 +63,18 @@ public extension UIViewController{
             activityIndicator.frame = view.bounds
             activityIndicator.startAnimating()
         }    }
-    public func hideActivityIndicator(){
+    func hideActivityIndicator(){
         if let activityIndicator = view.viewWithTag(99999999) as? UIActivityIndicatorView{
             activityIndicator.stopAnimating()
             activityIndicator.removeFromSuperview()
         }
     }
     //KeyboardUtils
-    public func register(){
+    func register(){
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    public func unregister(){
+    func unregister(){
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }

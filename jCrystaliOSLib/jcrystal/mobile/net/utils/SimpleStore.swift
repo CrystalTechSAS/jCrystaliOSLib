@@ -32,7 +32,7 @@ public class SimpleStore{
 	static func getDouble(_ key : String, _ defValue : Double! = nil) -> Double!{
         let preferences = UserDefaults.standard
         if preferences.object(forKey: key) != nil{
-            return preferences.double(forKey: key) ?? defValue
+            return preferences.double(forKey: key)
         }
         return defValue
     }
@@ -46,7 +46,7 @@ public class SimpleStore{
     static func getDate(_ key : String, _ defValue : Date! = nil) -> Date!{
         let preferences = UserDefaults.standard
         if preferences.object(forKey: key) != nil{
-            return Date(timeIntervalSince1970: preferences.double(forKey: key)) ?? defValue
+            return Date(timeIntervalSince1970: preferences.double(forKey: key))
         }
         return defValue
     }
