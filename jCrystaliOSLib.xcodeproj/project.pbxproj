@@ -28,6 +28,7 @@
 		C285301122385EA4001EFD24 /* CrystalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2852F8F22385EA4001EFD24 /* CrystalViewController.swift */; };
 		C285301222385EA4001EFD24 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2852F9022385EA4001EFD24 /* PhotoPicker.swift */; };
 		C28530142238A3F8001EFD24 /* DBUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28530132238A3F8001EFD24 /* DBUtils.swift */; };
+		C2F3C34B230B9E8700A322B3 /* CrystalDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F3C34A230B9E8700A322B3 /* CrystalDates.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		C2852F8F22385EA4001EFD24 /* CrystalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrystalViewController.swift; sourceTree = "<group>"; };
 		C2852F9022385EA4001EFD24 /* PhotoPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		C28530132238A3F8001EFD24 /* DBUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBUtils.swift; sourceTree = "<group>"; };
+		C2F3C34A230B9E8700A322B3 /* CrystalDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrystalDates.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				C2852F8E22385EA4001EFD24 /* UtilExtensions.swift */,
 				C2852F8F22385EA4001EFD24 /* CrystalViewController.swift */,
 				C2852F9022385EA4001EFD24 /* PhotoPicker.swift */,
+				C2F3C34A230B9E8700A322B3 /* CrystalDates.swift */,
 			);
 			path = jcrystal;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				C285301222385EA4001EFD24 /* PhotoPicker.swift in Sources */,
 				C285300E22385EA4001EFD24 /* PaymentMethod.swift in Sources */,
 				C2852F9722385EA4001EFD24 /* JCFile.swift in Sources */,
+				C2F3C34B230B9E8700A322B3 /* CrystalDates.swift in Sources */,
 				C2852F9522385EA4001EFD24 /* JCrystalApp.swift in Sources */,
 				C285300C22385EA4001EFD24 /* Gender.swift in Sources */,
 				C2852F9922385EA4001EFD24 /* RequestError.swift in Sources */,
