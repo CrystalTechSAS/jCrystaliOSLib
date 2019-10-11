@@ -22,9 +22,9 @@
  */
 import Foundation
 public class JCFile{
-	var data : Data;
-	var mimeType : String!;
-	init(data : Data, type : String!){
+	public var data : Data;
+	public var mimeType : String!;
+	public init(data : Data, type : String!){
 		self.data = data
 		self.mimeType = type
 	}

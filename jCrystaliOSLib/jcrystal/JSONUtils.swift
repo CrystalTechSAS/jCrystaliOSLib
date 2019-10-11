@@ -24,6 +24,7 @@ import Foundation
 func createDateFormatter(_ format : String, _ timeZone : String!) -> DateFormatter{
     let ret = DateFormatter()
     ret.dateFormat=format
+    ret.locale= Locale(identifier: "en_US")
     if timeZone != nil{
 		ret.timeZone = TimeZone(abbreviation: timeZone)
     }
