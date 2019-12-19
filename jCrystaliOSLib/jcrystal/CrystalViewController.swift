@@ -56,7 +56,7 @@ public extension UIViewController{
     func showActivityIndicator(){
 		if let activityIndicator = view.viewWithTag(99999999) as? UIActivityIndicatorView{
         }else{
-            let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
+            let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
             activityIndicator.backgroundColor = UIColor.black.withAlphaComponent(0.4)
             activityIndicator.tag = 99999999;
             view.addSubview(activityIndicator)
@@ -79,7 +79,7 @@ public extension UIViewController{
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     @objc func keyboardWasShown(notification: NSNotification){
-        var info = notification.userInfo!
+        let info = notification.userInfo!
         if let keyboard = (info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.origin{
             let frame = view.frame
             lastViewHeight = frame.height

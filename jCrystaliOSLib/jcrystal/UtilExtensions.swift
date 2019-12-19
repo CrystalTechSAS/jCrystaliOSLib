@@ -32,7 +32,7 @@ extension UIScrollView : UITextFieldDelegate,UITextViewDelegate{
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     @objc public func keyboardWasShown(notification: NSNotification){
-        var info = notification.userInfo!
+        let info = notification.userInfo!
         let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
         self.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize!.height+60, right: 0.0)
         self.scrollIndicatorInsets = self.contentInset
