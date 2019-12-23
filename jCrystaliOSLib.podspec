@@ -12,9 +12,10 @@ Pod::Spec.new do |spec|
   spec.license      = { :type => "MIT", :file => "LICENSE" }
 
   spec.author             =  "Germán Sotelo"
-  spec.platform     = :ios
+  spec.swift_version = "4.2"
+  spec.platform = :ios, "9.0"
   spec.source       = { :git => "https://github.com/CrystalTechSAS/jCrystaliOSLib.git", :tag => "#{spec.version}" }
 
-  spec.source_files  = "jCrystaliOSLib"
+  spec.source_files  = ["jCrystaliOSLib/**/*.swift", "jCrystaliOSLib/jCrystaliOSLib.ht"]
 
 end
