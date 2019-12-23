@@ -56,7 +56,7 @@ public extension UIViewController{
     func showActivityIndicator(){
 		if let activityIndicator = view.viewWithTag(99999999) as? UIActivityIndicatorView{
         }else{
-            let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+            let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
             activityIndicator.backgroundColor = UIColor.black.withAlphaComponent(0.4)
             activityIndicator.tag = 99999999;
             view.addSubview(activityIndicator)
