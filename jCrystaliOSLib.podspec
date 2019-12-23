@@ -16,6 +16,6 @@ Pod::Spec.new do |spec|
   spec.platform = :ios, "9.0"
   spec.source       = { :git => "https://github.com/CrystalTechSAS/jCrystaliOSLib.git", :tag => "#{spec.version}" }
 
-  spec.source_files  = ["jCrystaliOSLib/**/*.swift", "jCrystaliOSLib/jCrystaliOSLib.ht"]
+  spec.source_files  = ["jCrystaliOSLib", "jCrystaliOSLib/jcrystal/**/*.swift"]
 
 end
